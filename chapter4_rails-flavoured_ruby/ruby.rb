@@ -136,3 +136,102 @@ It's an empty string!
 >> puts string_message("foobar")
 The string is nonempty.
 
+>>  "foo bar     baz".split     # Split a string into a three-element array.
+=> ["foo", "bar", "baz"]
+
+>> "fooxbarxbazx".split('x')
+=> ["foo", "bar", "baz"]
+
+>> a = [42, 8, 17]
+=> [42, 8, 17]
+>> a[0]               # Ruby uses square brackets for array access.
+=> 42
+>> a[1]
+=> 8
+>> a[2]
+=> 17
+>> a[-1]              # Indices can even be negative!
+=> 17
+
+>> a                  # Just a reminder of what 'a' is
+=> [42, 8, 17]
+>> a.first
+=> 42
+>> a.second
+=> 8
+>> a.last
+=> 17
+>> a.last == a[-1]    # Comparison using ==
+=> true
+
+>> x = a.length       # Like strings, arrays respond to the 'length' method.
+=> 3
+>> x == 3
+=> true
+>> x == 1
+=> false
+>> x != 1
+=> true
+>> x >= 1
+=> true
+>> x < 1
+=> false
+
+>> a
+=> [42, 8, 17]
+>> a.empty?
+=> false
+>> a.include?(42)
+=> true
+>> a.sort
+=> [8, 17, 42]
+>> a.reverse
+=> [17, 8, 42]
+>> a.shuffle
+=> [17, 42, 8]
+>> a
+=> [42, 8, 17]
+
+>> a
+=> [42, 8, 17]
+>> a.sort!
+=> [8, 17, 42]
+>> a
+=> [8, 17, 42]
+
+>> a.push(6)                  # Pushing 6 onto an array
+=> [42, 8, 17, 6]
+>> a << 7                     # Pushing 7 onto an array
+=> [42, 8, 17, 6, 7]
+>> a << "foo" << "bar"        # Chaining array pushes
+=> [42, 8, 17, 6, 7, "foo", "bar"]
+
+>> a
+=> [42, 8, 17, 7, "foo", "bar"]
+>> a.join                       # Join on nothing.
+=> "428177foobar"
+>> a.join(', ')                 # Join on comma-space.
+=> "42, 8, 17, 7, foo, bar"
+
+>> 0..9
+=> 0..9
+>> 0..9.to_a              # Oops, call to_a on 9.
+NoMethodError: undefined method `to_a' for 9:Fixnum
+>> (0..9).to_a            # Use parentheses to call to_a on the range.
+=> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+>> a = %w[foo bar baz quux]         # Use %w to make a string array.
+=> ["foo", "bar", "baz", "quux"]
+>> a[0..2]
+=> ["foo", "bar", "baz"]
+
+>> a = (0..9).to_a
+=> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>> a[2..(a.length-1)]               # Explicitly use the array's length.
+=> [2, 3, 4, 5, 6, 7, 8, 9]
+>> a[2..-1]                         # Use the index -1 trick.
+=> [2, 3, 4, 5, 6, 7, 8, 9]
+
+>> ('a'..'e').to_a
+=> ["a", "b", "c", "d", "e"]
+
