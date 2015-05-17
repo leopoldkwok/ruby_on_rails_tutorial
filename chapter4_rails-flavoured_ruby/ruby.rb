@@ -235,3 +235,68 @@ NoMethodError: undefined method `to_a' for 9:Fixnum
 >> ('a'..'e').to_a
 => ["a", "b", "c", "d", "e"]
 
+4.3.2 Blocks
+
+>> (1..5).each { |i| puts 2 * i }
+2
+4
+6
+8
+10
+=> 1..5
+
+>> (1..5).each do |i|
+?>   puts 2 * i
+>> end
+2
+4
+6
+8
+10
+=> 1..5
+
+>> (1..5).each do |number|
+?>   puts 2 * number
+>>   puts '--'
+>> end
+2
+--
+4
+--
+6
+--
+8
+--
+10
+--
+=> 1..5
+
+>> 3.times { puts "Betelgeuse!" }   # 3.times takes a block with no variables.
+"Betelgeuse!"
+"Betelgeuse!"
+"Betelgeuse!"
+=> 3
+>> (1..5).map { |i| i**2 }          # The ** notation is for 'power'.
+=> [1, 4, 9, 16, 25]
+>> %w[a b c]                        # Recall that %w makes string arrays.
+=> ["a", "b", "c"]
+>> %w[a b c].map { |char| char.upcase }
+=> ["A", "B", "C"]
+>> %w[A B C].map { |char| char.downcase }
+=> ["a", "b", "c"]
+
+>> %w[A B C].map { |char| char.downcase }
+=> ["a", "b", "c"]
+>> %w[A B C].map(&:downcase)
+=> ["a", "b", "c"]
+
+>> ('a'..'z').to_a                     # An alphabet array
+=> ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
+"p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+>> ('a'..'z').to_a.shuffle             # Shuffle it.
+=> ["c", "g", "l", "k", "h", "z", "s", "i", "n", "d", "y", "u", "t", "j", "q",
+"b", "r", "o", "f", "e", "w", "v", "m", "a", "x", "p"]
+>> ('a'..'z').to_a.shuffle[0..7]       # Pull out the first eight elements.
+=> ["f", "w", "i", "a", "h", "p", "c", "x"]
+>> ('a'..'z').to_a.shuffle[0..7].join  # Join them together to make one string.
+=> "mznpybuj"
