@@ -300,3 +300,46 @@ NoMethodError: undefined method `to_a' for 9:Fixnum
 => ["f", "w", "i", "a", "h", "p", "c", "x"]
 >> ('a'..'z').to_a.shuffle[0..7].join  # Join them together to make one string.
 => "mznpybuj"
+
+4.3.3 Hashes and symbols
+
+>> user = {}                          # {} is an empty hash.
+=> {}
+>> user["first_name"] = "Michael"     # Key "first_name", value "Michael"
+=> "Michael"
+>> user["last_name"] = "Hartl"        # Key "last_name", value "Hartl"
+=> "Hartl"
+>> user["first_name"]                 # Element access is like arrays.
+=> "Michael"
+>> user                               # A literal representation of the hash
+=> {"last_name"=>"Hartl", "first_name"=>"Michael"}
+
+>> user = { "first_name" => "Michael", "last_name" => "Hartl" }
+=> {"last_name"=>"Hartl", "first_name"=>"Michael"}
+
+>> "name".split('')
+=> ["n", "a", "m", "e"]
+>> :name.split('')
+NoMethodError: undefined method `split' for :name:Symbol
+>> "foobar".reverse
+=> "raboof"
+>> :foobar.reverse
+NoMethodError: undefined method `reverse' for :foobar:Symbol
+
+>> user = { :name => "Michael Hartl", :email => "michael@example.com" }
+=> {:name=>"Michael Hartl", :email=>"michael@example.com"}
+>> user[:name]              # Access the value corresponding to :name.
+=> "Michael Hartl"
+>> user[:password]          # Access the value of an undefined key.
+=> nil
+
+Listing 4.10: Nested hashes.
+>> params = {}        # Define a hash called 'params' (short for 'parameters').
+=> {}
+>> params[:user] = { name: "Michael Hartl", email: "mhartl@example.com" }
+=> {:name=>"Michael Hartl", :email=>"mhartl@example.com"}
+>> params
+=> {:user=>{:name=>"Michael Hartl", :email=>"mhartl@example.com"}}
+>>  params[:user][:email]
+=> "mhartl@example.com"
+
